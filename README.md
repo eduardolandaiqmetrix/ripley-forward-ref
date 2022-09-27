@@ -4,10 +4,11 @@ This is a React project bootstrapped with [bun](https://bun.sh/).
 
 ## Getting Started
 
-### Cloning the repo
+
+### Installing Bun
 
 ```sh
-bun create react ./react-bun-app
+curl https://bun.sh/install | bash
 ```
 
 ### Development
