@@ -1,23 +1,42 @@
-import logo from "./logo.svg";
+import { useState } from "react";
+import styled from "styled-components";
 import "./App.css";
+import { CreateTaskForm } from "./forms/CreateTaskForm";
 
 function App() {
+  const [tasks, setTasks] = useState([]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h3>Welcome to React!</h3>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Root className="App">
+
+        <ol>
+          {tasks.map((task, idx) => (
+            <li key={idx}>{task}</li>
+          ))}
+        </ol>
+     
+      <CreateTaskForm addTask={(task) => setTasks(prev => prev.concat(task)) } />
+  
+      <Button >Submit Form</Button>
+    </Root>
   );
 }
 
 export default App;
+
+
+const Root = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 500px;
+  align-items: center;
+`;
+
+const Button = styled.button`
+  border: none;
+  background-color: #d88c12;
+  padding: 8px;
+  font-weight: bold;
+  color: white;
+  border-radius: 8px;
+`
