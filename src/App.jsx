@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import styled from "styled-components";
 import "./App.css";
 import { CreateTaskForm } from "./forms/CreateTaskForm";
 
 function App() {
+  const formRef = useRef();
+
   const [tasks, setTasks] = useState([]);
+
   return (
     <Root className="App">
 
@@ -14,9 +17,9 @@ function App() {
           ))}
         </ol>
      
-      <CreateTaskForm addTask={(task) => setTasks(prev => prev.concat(task)) } />
+      <CreateTaskForm ref={formRef} addTask={(task) => setTasks(prev => prev.concat(task)) } />
   
-      <Button >Submit Form</Button>
+      <Button onClick={() => formRef.current.submitForm()} >Submit Form</Button>
     </Root>
   );
 }
